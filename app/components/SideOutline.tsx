@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const sections = [
   { label: "Úvod", id: "úvod" },
@@ -15,7 +15,17 @@ const sections = [
 export default function SideOutline() {
   const [activeId, setActiveId] = useState("úvod");
   const [visible, setVisible] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const { scrollY } = useScroll();
+
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (!isDesktop) return null;
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setVisible(latest > 400);
