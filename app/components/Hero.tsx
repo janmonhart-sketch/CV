@@ -3,15 +3,23 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import SplitText from "./SplitText";
 import Reveal from "./Reveal";
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  // Removed opacityFade — stats and content no longer disappear on scroll
   const yParallax = useTransform(scrollY, [0, 800], [0, 80]);
   const imgScale = useTransform(scrollY, [0, 600], [1, 1.08]);
   const imgY = useTransform(scrollY, [0, 600], [0, 60]);
+
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden" id="úvod" style={{ position: "relative" }}>
@@ -19,15 +27,54 @@ export default function Hero() {
       <div className="absolute inset-0 grid-pattern" />
 
       <motion.div
-        style={{ y: yParallax, paddingLeft: "clamp(2.5rem, 6vw, 6rem)", paddingRight: 0 }}
+        style={{
+          y: yParallax,
+          paddingLeft: isDesktop ? "clamp(2.5rem, 6vw, 6rem)" : "1.5rem",
+          paddingRight: isDesktop ? 0 : "1.5rem",
+        }}
         className="relative z-10 w-full max-w-7xl mx-auto"
       >
         <div
-          className="grid lg:grid-cols-5 items-start min-h-screen"
-          style={{ gap: "clamp(3rem, 5vw, 5rem)", paddingTop: "clamp(7rem, 12vw, 10rem)", paddingBottom: "clamp(4rem, 7vw, 6rem)" }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr",
+            paddingTop: isDesktop ? "clamp(7rem, 12vw, 10rem)" : "6rem",
+            paddingBottom: isDesktop ? "clamp(4rem, 7vw, 6rem)" : "4rem",
+            minHeight: "100svh",
+            alignItems: "flex-start",
+          }}
         >
-          {/* ── Left: Text — full width, photo is absolute overlay ── */}
-          <div className="order-2 lg:order-1 lg:col-span-5">
+          {/* ── Mobile portrait ── */}
+          {!isDesktop && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.9, delay: 1.8 }}
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                marginBottom: "2rem",
+              }}
+            >
+              <Image
+                src="/portrait.png"
+                alt="Jan Monhart"
+                width={280}
+                height={320}
+                priority
+                style={{
+                  width: "min(280px, 65vw)",
+                  height: "auto",
+                  objectFit: "contain",
+                  borderRadius: "1rem",
+                }}
+              />
+            </motion.div>
+          )}
+
+          {/* ── Text column ── */}
+          <div>
 
             {/* Badge — gold */}
             <motion.div
@@ -102,12 +149,12 @@ export default function Hero() {
 
           </div>
 
-          {/* ── Right: Photo — absolute overlay ── */}
+          {/* ── Desktop: Photo absolute overlay ── */}
+          {isDesktop && (
           <motion.div
             initial={{ opacity: 0, scale: 0.92, filter: "blur(16px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.2, delay: 2.2, ease: [0.645, 0.045, 0.355, 1] }}
-            className="order-1 lg:order-2 lg:col-span-2"
             style={{
               position: "absolute",
               right: 0,
@@ -163,6 +210,7 @@ export default function Hero() {
               </motion.div>
             </div>
           </motion.div>
+          )}
         </div>
       </motion.div>
 

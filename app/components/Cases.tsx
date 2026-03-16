@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
 import SplitText from "./SplitText";
 import Reveal from "./Reveal";
 
@@ -64,6 +65,14 @@ function accentRgb(a: string) {
 }
 
 export default function Cases() {
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const check = () => setIsDesktop(window.innerWidth >= 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <section className="section" id="reference">
       <div
@@ -121,15 +130,15 @@ export default function Cases() {
                   className="glass rounded-2xl overflow-hidden group"
                   style={{
                     display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    minHeight: "360px",
+                    gridTemplateColumns: isDesktop ? "1fr 1fr" : "1fr",
+                    minHeight: isDesktop ? "360px" : "auto",
                     borderColor: `rgba(${rgb}, 0.15)`,
                   }}
                 >
                   {/* Text side */}
                   <div
                     style={{
-                      order: imageRight ? 0 : 1,
+                      order: isDesktop ? (imageRight ? 0 : 1) : 1,
                       padding: "clamp(2rem, 4vw, 3.5rem)",
                       display: "flex",
                       flexDirection: "column",
@@ -192,11 +201,13 @@ export default function Cases() {
                   {/* Image side */}
                   <div
                     style={{
-                      order: imageRight ? 1 : 0,
+                      order: isDesktop ? (imageRight ? 1 : 0) : 0,
                       position: "relative",
                       overflow: "hidden",
-                      minHeight: "320px",
-                      borderRadius: imageRight ? "0 1rem 1rem 0" : "1rem 0 0 1rem",
+                      minHeight: isDesktop ? "320px" : "220px",
+                      borderRadius: isDesktop
+                        ? (imageRight ? "0 1rem 1rem 0" : "1rem 0 0 1rem")
+                        : "1rem 1rem 0 0",
                       boxShadow: "0 20px 60px rgba(0,0,0,0.4)",
                     }}
                   >

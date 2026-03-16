@@ -123,7 +123,7 @@ export default function Timeline() {
 
               return (
                 <Reveal key={exp.company} delay={i * 0.12}>
-                  <div style={{ position: "relative", display: "flex", marginTop: i === 0 ? "0" : "-10rem" }}>
+                  <div style={{ position: "relative", display: "flex", marginTop: i === 0 ? "0" : isDesktop ? "-10rem" : "0" }}>
 
                     {/* Dot uprostřed linky — jen na desktopu */}
                     {isDesktop && (
