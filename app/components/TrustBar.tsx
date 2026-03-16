@@ -1,21 +1,20 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 const clients = [
-  { src: "/logos/siemens.png", alt: "Siemens" },
-  { src: "/logos/nexen.png", alt: "Nexen Tire" },
-  { src: "/logos/btl.webp", alt: "BTL" },
-  { src: "/logos/livesport.png", alt: "Livesport" },
-  { src: "/logos/algotech.png", alt: "Algotech" },
-  { src: "/logos/ecostep.png", alt: "Ecostep" },
-  { src: "/logos/mercuria.png", alt: "Mercuria Laser Game" },
-  { src: "/logos/md21.png", alt: "MD21" },
+  { src: "/logos/siemens.png", alt: "Siemens", maxW: "100px", invert: true },
+  { src: "/logos/nexen.png", alt: "Nexen Tire", maxW: "80px", invert: true },
+  { src: "/logos/btl.webp", alt: "BTL", maxW: "80px", invert: true },
+  { src: "/logos/livesport.png", alt: "Livesport", maxW: "110px", invert: true },
+  { src: "/logos/algotech.png", alt: "Algotech", maxW: "100px", invert: true },
+  { src: "/logos/ecostep.png", alt: "Ecostep", maxW: "100px", invert: true },
+  { src: "/logos/heureka.png", alt: "Heureka", maxW: "100px", invert: true },
+  { src: "/logos/baywa-re-logo.png", alt: "BayWa r.e.", maxW: "110px", invert: false },
 ];
 
 export default function TrustBar() {
-  const doubled = [...clients, ...clients, ...clients];
+  const doubled = [...clients, ...clients];
 
   return (
     <section className="relative overflow-hidden" style={{ padding: "var(--space-block) 0" }}>
@@ -38,34 +37,33 @@ export default function TrustBar() {
       <div className="slider-fade overflow-hidden">
         <div className="slider-track">
           {doubled.map((client, i) => (
-            <div
-              key={i}
-              className="flex items-center justify-center flex-shrink-0 rounded-2xl"
-              style={{
-                padding: "14px 32px",
-                background: "rgba(255,255,255,0.05)",
-                border: "1px solid rgba(255,255,255,0.07)",
-                minWidth: "140px",
-                height: "72px",
-              }}
-            >
-              <Image
+            <div key={i} style={{
+              width: "160px",
+              minWidth: "160px",
+              height: "80px",
+              flexShrink: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+              <img
                 src={client.src}
                 alt={client.alt}
-                width={120}
-                height={40}
                 style={{
-                  width: "120px",
-                  height: "40px",
+                  maxHeight: "56px",
+                  width: "auto",
+                  maxWidth: client.maxW,
                   objectFit: "contain",
-                  filter: "grayscale(1) brightness(2) opacity(0.65)",
+                  filter: "grayscale(1) opacity(0.55)",
+                  display: "block",
                   transition: "filter 0.3s ease",
+                  cursor: "pointer",
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLImageElement).style.filter = "grayscale(0) brightness(1) opacity(1)";
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0) opacity(1)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.target as HTMLImageElement).style.filter = "grayscale(1) brightness(2) opacity(0.65)";
+                  (e.currentTarget as HTMLImageElement).style.filter = "grayscale(1) opacity(0.55)";
                 }}
               />
             </div>

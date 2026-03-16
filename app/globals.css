@@ -26,6 +26,8 @@ html.lenis, html.lenis body {
   --accent-light: #38bdf8;
   --accent-glow: rgba(14, 165, 233, 0.25);
   --purple: #818cf8;
+  --gold: #f59e0b;
+  --gold-light: #fbbf24;
   --text-primary: #f1f5f9;
   --text-secondary: #94a3b8;
   --text-muted: #475569;
@@ -59,15 +61,15 @@ body {
 /* ── Glassmorphism ──────────────────────────────────────────────── */
 .glass {
   background: var(--bg-card);
-  border: 1px solid var(--border-glass);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(24px) saturate(180%);
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 .glass:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(14, 165, 233, 0.2);
-  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.08), 0 12px 48px rgba(0, 0, 0, 0.5);
+  border-color: rgba(14, 165, 233, 0.15);
+  box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.15), 0 12px 48px rgba(0, 0, 0, 0.5);
 }
 
 /* ── Gradient Text ──────────────────────────────────────────────── */
@@ -148,9 +150,30 @@ body {
 /* ── Infinite Slider ────────────────────────────────────────────── */
 .slider-track {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+  align-items: center;
   width: max-content;
   animation: slide 25s linear infinite;
+}
+
+.slider-track > div {
+  width: 140px !important;
+  height: 44px !important;
+  min-width: 140px !important;
+  max-width: 140px !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.slider-track > div img {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 140px !important;
+  max-height: 44px !important;
 }
 
 @keyframes slide {
@@ -187,10 +210,10 @@ body {
 .section-label .line {
   height: 1px;
   width: 3rem;
-  background: linear-gradient(90deg, transparent, var(--accent));
+  background: linear-gradient(90deg, transparent, var(--gold));
 }
 .section-label .line:last-child {
-  background: linear-gradient(90deg, var(--accent), transparent);
+  background: linear-gradient(90deg, var(--gold), transparent);
 }
 .section-label span {
   font-size: 0.7rem;

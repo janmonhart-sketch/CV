@@ -144,34 +144,6 @@ export default function Footer() {
           </div>
         </Reveal>
 
-        {/* Education */}
-        <Reveal delay={0.5}>
-          <div
-            className="glass rounded-2xl mx-auto text-center"
-            style={{
-              padding: "clamp(1.5rem, 2.5vw, 2rem)",
-              maxWidth: "480px",
-              marginTop: "1.5rem",
-            }}
-          >
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <GraduationCap size={16} color="#818cf8" strokeWidth={1.8} />
-              <span
-                className="font-semibold tracking-[0.2em] uppercase"
-                style={{ color: "#818cf8", fontSize: "0.65rem" }}
-              >
-                Vzdělání
-              </span>
-            </div>
-            <p className="font-bold" style={{ color: "var(--text-primary)", fontSize: "1rem" }}>
-              Karlova Univerzita
-            </p>
-            <p style={{ color: "#818cf8", fontSize: "0.85rem" }}>
-              Mgr. &mdash; Fakulta tělesné výchovy a sportu, obor TVS (2016)
-            </p>
-          </div>
-        </Reveal>
-
         {/* Social links */}
         <Reveal delay={0.55}>
           <div

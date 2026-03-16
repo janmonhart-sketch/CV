@@ -8,37 +8,42 @@ import Reveal from "./Reveal";
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 800], [0, 120]);
-  const opacityFade = useTransform(scrollY, [0, 600], [1, 0]);
+  // Removed opacityFade — stats and content no longer disappear on scroll
+  const yParallax = useTransform(scrollY, [0, 800], [0, 80]);
   const imgScale = useTransform(scrollY, [0, 600], [1, 1.08]);
   const imgY = useTransform(scrollY, [0, 600], [0, 60]);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" id="úvod">
+    <section className="relative min-h-screen flex items-center overflow-hidden" id="úvod" style={{ position: "relative" }}>
       <div className="mesh-bg" />
       <div className="absolute inset-0 grid-pattern" />
 
       <motion.div
-        style={{ y: yParallax, opacity: opacityFade }}
-        className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 lg:px-20"
+        style={{ y: yParallax, paddingLeft: "clamp(2.5rem, 6vw, 6rem)", paddingRight: 0 }}
+        className="relative z-10 w-full max-w-7xl mx-auto"
       >
-        <div className="grid lg:grid-cols-5 gap-16 lg:gap-12 items-center min-h-screen py-40">
-          {/* Left: Text — 3 cols, centered text */}
-          <div className="order-2 lg:order-1 lg:col-span-3 text-center lg:text-center">
-            {/* Badge */}
+        <div
+          className="grid lg:grid-cols-5 items-start min-h-screen"
+          style={{ gap: "clamp(3rem, 5vw, 5rem)", paddingTop: "clamp(7rem, 12vw, 10rem)", paddingBottom: "clamp(4rem, 7vw, 6rem)" }}
+        >
+          {/* ── Left: Text — full width, photo is absolute overlay ── */}
+          <div className="order-2 lg:order-1 lg:col-span-5">
+
+            {/* Badge — gold */}
             <motion.div
-              initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
+              initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
               animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 0.8, delay: 1.8, ease: [0.645, 0.045, 0.355, 1] }}
-              className="mb-10"
+              style={{ marginBottom: "clamp(1.5rem, 3vw, 2.5rem)" }}
             >
               <span
                 className="inline-flex items-center gap-2 px-5 py-2 rounded-full font-semibold tracking-[0.2em] uppercase"
                 style={{
-                  border: "1px solid rgba(14,165,233,0.3)",
-                  color: "#38bdf8",
-                  background: "rgba(14,165,233,0.06)",
-                  fontSize: "0.7rem",
+                  border: "1px solid rgba(245,158,11,0.4)",
+                  color: "#fbbf24",
+                  background: "rgba(245,158,11,0.07)",
+                  fontSize: "0.75rem",
+                  boxShadow: "0 0 24px rgba(245,158,11,0.15)",
                 }}
               >
                 Marketing Leader
@@ -50,13 +55,17 @@ export default function Hero() {
               className="font-black leading-[0.88] tracking-tighter"
               style={{
                 fontSize: "clamp(4.5rem, 10vw, 10rem)",
-                marginBottom: "clamp(2.5rem, 4vw, 4rem)",
+                marginBottom: "clamp(2rem, 3.5vw, 3.5rem)",
               }}
             >
               <span className="block" style={{ color: "var(--text-primary)" }}>
                 <SplitText delay={2}>Jan</SplitText>
               </span>
-              <span className="block gradient-text glow-text">
+              {/* inline-block fixes the visible gradient background box on "Monhart" */}
+              <span
+                className="gradient-text"
+                style={{ display: "inline-block" }}
+              >
                 <SplitText delay={2.15}>Monhart</SplitText>
               </span>
             </h1>
@@ -64,125 +73,91 @@ export default function Hero() {
             {/* Bio */}
             <Reveal delay={2.4}>
               <p
-                className="mx-auto leading-relaxed"
+                className="leading-relaxed"
                 style={{
                   color: "var(--text-secondary)",
-                  fontSize: "clamp(1rem, 1.3vw, 1.25rem)",
-                  marginBottom: "clamp(2.5rem, 4vw, 4rem)",
+                  fontSize: "clamp(1rem, 1.2vw, 1.2rem)",
+                  marginBottom: "clamp(2rem, 3.5vw, 3.5rem)",
                   maxWidth: "520px",
                 }}
               >
                 Strategický marketingový leader s&nbsp;10 lety zkušeností
-                v&nbsp;budování marketingových oddělení, řízení růstu
-                a&nbsp;implementaci online strategií. Prokazatelné výsledky
-                v&nbsp;B2B i&nbsp;B2C sektoru.
+                v&nbsp;budování marketingových oddělení a&nbsp;řízení růstu.
+                Řídil jsem projekty pro 50+ klientů včetně Siemens, BTL, Livesport
+                a&nbsp;Algotech. Specializuji se na výkonnostní marketing,
+                komplexní webová řešení a&nbsp;implementaci AI do marketingových procesů.
               </p>
             </Reveal>
 
             {/* CTAs */}
             <Reveal delay={2.55}>
               <div
-                className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                style={{ marginBottom: "clamp(4rem, 7vw, 7rem)" }}
+                className="flex flex-col sm:flex-row items-start gap-4"
+                style={{ marginBottom: "clamp(3rem, 5vw, 5rem)" }}
               >
                 <a href="#kontakt" className="btn-primary">Kontaktujte mě</a>
                 <a href="#zkušenosti" className="btn-secondary">Zkušenosti &rarr;</a>
               </div>
             </Reveal>
 
-            {/* Mini stats */}
-            <Reveal delay={2.7}>
-              <div
-                className="flex items-center justify-center gap-12 md:gap-16"
-                style={{
-                  paddingTop: "clamp(2rem, 3vw, 3rem)",
-                  borderTop: "1px solid rgba(255,255,255,0.05)",
-                }}
-              >
-                {[
-                  { value: "10+", label: "let zkušeností" },
-                  { value: "50+", label: "spokojených klientů" },
-                  { value: "35%", label: "nárůst leadů" },
-                ].map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div
-                      className="font-black gradient-text leading-none"
-                      style={{ fontSize: "clamp(2.2rem, 3.5vw, 3.5rem)" }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div
-                      className="mt-3 tracking-wider uppercase"
-                      style={{ color: "var(--text-muted)", fontSize: "clamp(0.6rem, 0.7vw, 0.72rem)" }}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
           </div>
 
-          {/* Right: Photo — 2 cols */}
+          {/* ── Right: Photo — absolute overlay ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9, filter: "blur(16px)" }}
+            initial={{ opacity: 0, scale: 0.92, filter: "blur(16px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.2, delay: 2.2, ease: [0.645, 0.045, 0.355, 1] }}
-            className="order-1 lg:order-2 lg:col-span-2 flex justify-center"
+            className="order-1 lg:order-2 lg:col-span-2"
+            style={{
+              position: "absolute",
+              right: 0,
+              top: 0,
+              bottom: 0,
+              width: "42%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              pointerEvents: "none",
+            }}
           >
-            <div className="relative">
-              <div
-                className="absolute -inset-16 rounded-3xl"
-                style={{
-                  background: "radial-gradient(ellipse at center, rgba(14,165,233,0.1) 0%, transparent 70%)",
-                  filter: "blur(60px)",
-                }}
-              />
-              <motion.div
-                style={{ scale: imgScale, y: imgY }}
-                className="relative rounded-2xl overflow-hidden"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.5, ease: [0.645, 0.045, 0.355, 1] }}
-              >
-                <div
+            <div className="relative" style={{ width: "100%", height: "100%" }}>
+              <div className="absolute inset-0" style={{
+                background: "radial-gradient(ellipse at center, rgba(14,165,233,0.1) 0%, transparent 70%)",
+                filter: "blur(60px)",
+              }} />
+              <motion.div style={{ scale: imgScale, y: imgY, height: "100%",
+                display: "flex", alignItems: "center", justifyContent: "flex-end" }}>
+                <Image
+                  src="/portrait.png"
+                  alt="Jan Monhart"
+                  width={460}
+                  height={580}
+                  priority
                   style={{
-                    border: "1px solid rgba(255,255,255,0.06)",
-                    borderRadius: "1rem",
-                    overflow: "hidden",
-                    boxShadow: "0 30px 100px rgba(0,0,0,0.6), 0 0 60px rgba(14,165,233,0.06)",
+                    height: "85vh",
+                    width: "auto",
+                    maxWidth: "100%",
+                    objectFit: "contain",
+                    objectPosition: "right center",
                   }}
-                >
-                  <Image
-                    src="/portrait.png"
-                    alt="Jan Monhart"
-                    width={460}
-                    height={580}
-                    className="object-cover"
-                    style={{ maxHeight: "620px", width: "auto" }}
-                    priority
-                  />
-                </div>
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-44"
+                />
+                <div className="absolute bottom-0 left-0 right-0 h-44"
                   style={{ background: "linear-gradient(to top, var(--bg-primary) 0%, transparent 100%)" }}
                 />
               </motion.div>
 
-              {/* Floating badge */}
               <motion.div
-                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ delay: 2.8, duration: 0.6, ease: [0.645, 0.045, 0.355, 1] }}
-                className="absolute -bottom-5 -left-8 glass rounded-xl px-5 py-3"
-                style={{ borderColor: "rgba(52,211,153,0.25)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 2.8, duration: 0.6 }}
+                className="absolute glass rounded-xl px-5 py-3"
+                style={{ bottom: "10%", left: "2rem", borderColor: "rgba(52,211,153,0.25)", zIndex: 2 }}
               >
                 <div className="flex items-center gap-3">
-                  <div
-                    className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                    style={{ background: "#34d399", animation: "pulse-glow 2s ease-in-out infinite" }}
-                  />
+                  <div className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                    style={{ background: "#34d399", animation: "pulse-glow 2s ease-in-out infinite" }} />
                   <span className="font-semibold" style={{ color: "#34d399", fontSize: "0.78rem" }}>
-                    Dostupný pro spolupráce
+                    Otevřený novým příležitostem
                   </span>
                 </div>
               </motion.div>
