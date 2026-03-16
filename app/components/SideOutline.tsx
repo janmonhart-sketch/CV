@@ -25,9 +25,8 @@ export default function SideOutline() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  if (!isDesktop) return null;
-
   useMotionValueEvent(scrollY, "change", (latest) => {
+    if (typeof window === "undefined") return;
     setVisible(latest > 400);
     const threshold = window.innerHeight * 0.45;
     for (let i = sections.length - 1; i >= 0; i--) {
@@ -38,6 +37,8 @@ export default function SideOutline() {
       }
     }
   });
+
+  if (!isDesktop) return null;
 
   return (
     <motion.div
