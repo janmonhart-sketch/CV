@@ -28,6 +28,7 @@ function StatCard({
   icon: Icon,
   accent = "#0ea5e9",
   delay = 0,
+  numberSize,
 }: {
   value: number;
   suffix?: string;
@@ -36,6 +37,7 @@ function StatCard({
   icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number }>;
   accent?: string;
   delay?: number;
+  numberSize?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -89,7 +91,7 @@ function StatCard({
       <div
         className="relative font-black leading-none"
         style={{
-          fontSize: "clamp(3.5rem, 5vw, 5rem)",
+          fontSize: numberSize ?? "clamp(3.5rem, 5vw, 5rem)",
           whiteSpace: "nowrap",
           background: `linear-gradient(135deg, ${accent} 0%, #818cf8 100%)`,
           WebkitBackgroundClip: "text",
@@ -157,7 +159,7 @@ export default function Stats() {
             <StatCard value={50} suffix="+" label="Spokojených klientů" sublabel="Siemens, BTL, Livesport, Heureka a další" icon={Handshake} accent="#0ea5e9" delay={0} />
           </Reveal>
           <Reveal delay={0.1} style={{ height: "100%" }}>
-            <StatCard value={10} suffix="M+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} />
+            <StatCard value={10} suffix="M Kč+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} numberSize="3.5rem" />
           </Reveal>
           <Reveal delay={0.2} style={{ height: "100%" }}>
             <StatCard value={10} suffix="+" label="Let v oboru" sublabel="od KAM po Marketing Leadera" icon={Rocket} accent="#0ea5e9" delay={0.2} />
