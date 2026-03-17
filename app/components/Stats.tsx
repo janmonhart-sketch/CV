@@ -61,6 +61,8 @@ function StatCard({
       style={{
         padding: "clamp(1.75rem, 3vw, 2.5rem) clamp(1rem, 1.5vw, 1.5rem)",
         borderBottom: `2px solid rgba(${rgb}, 0.4)`,
+        minHeight: "320px",
+        height: "100%",
       }}
     >
       {/* Hover glow */}
@@ -87,13 +89,13 @@ function StatCard({
       <div
         className="relative font-black leading-none"
         style={{
-          fontSize: "clamp(2.8rem, 4vw, 3.8rem)",
+          fontSize: "clamp(3.5rem, 5vw, 5rem)",
           whiteSpace: "nowrap",
           background: `linear-gradient(135deg, ${accent} 0%, #818cf8 100%)`,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
-          filter: `drop-shadow(0 0 16px rgba(${rgb}, 0.5))`,
+          filter: `drop-shadow(0 0 20px rgba(${rgb}, 0.6))`,
           marginBottom: "clamp(0.75rem, 1.5vw, 1rem)",
         }}
       >
@@ -150,20 +152,20 @@ export default function Stats() {
           </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
-          <Reveal delay={0}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 w-full" style={{ gridAutoRows: "1fr" }}>
+          <Reveal delay={0} style={{ height: "100%" }}>
             <StatCard value={50} suffix="+" label="Spokojených klientů" sublabel="Siemens, BTL, Livesport, Heureka a další" icon={Handshake} accent="#0ea5e9" delay={0} />
           </Reveal>
-          <Reveal delay={0.1}>
+          <Reveal delay={0.1} style={{ height: "100%" }}>
             <StatCard value={10} suffix="M+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} />
           </Reveal>
-          <Reveal delay={0.2}>
-            <StatCard value={10} suffix="" label="Let v oboru" sublabel="od KAM po Marketing Leadera" icon={Rocket} accent="#0ea5e9" delay={0.2} />
+          <Reveal delay={0.2} style={{ height: "100%" }}>
+            <StatCard value={10} suffix="+" label="Let v oboru" sublabel="od KAM po Marketing Leadera" icon={Rocket} accent="#0ea5e9" delay={0.2} />
           </Reveal>
-          <Reveal delay={0.3}>
+          <Reveal delay={0.3} style={{ height: "100%" }}>
             <StatCard value={18} suffix="+" label="Zemí světa" sublabel="marketing v mezinárodním prostředí" icon={Globe} accent="#34d399" delay={0.3} />
           </Reveal>
-          <Reveal delay={0.4}>
+          <Reveal delay={0.4} style={{ height: "100%" }}>
             <StatCard value={35} suffix="%" label="Průměrné navýšení" sublabel="leadů, obratu a ziskovosti klientů" icon={TrendingUp} accent="#f59e0b" delay={0.4} />
           </Reveal>
         </div>
