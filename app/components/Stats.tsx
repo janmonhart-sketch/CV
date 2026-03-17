@@ -154,21 +154,18 @@ export default function Stats() {
           </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 w-full" style={{ gridAutoRows: "1fr" }}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full" style={{ gridAutoRows: "1fr" }}>
           <Reveal delay={0} style={{ height: "100%" }}>
             <StatCard value={50} suffix="+" label="Spokojených klientů" sublabel="Siemens, BTL, Livesport, Heureka a další" icon={Handshake} accent="#0ea5e9" delay={0} />
           </Reveal>
           <Reveal delay={0.1} style={{ height: "100%" }}>
-            <StatCard value={10} suffix="M Kč+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} numberSize="3.5rem" />
+            <StatCard value={5} suffix="M+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} />
           </Reveal>
           <Reveal delay={0.2} style={{ height: "100%" }}>
-            <StatCard value={10} suffix="+" label="Let v oboru" sublabel="od KAM po Marketing Leadera" icon={Rocket} accent="#0ea5e9" delay={0.2} />
+            <StatCard value={10} suffix="+" label="Let v oboru" sublabel="služby poskytované do více jak 18 zemí světa" icon={Rocket} accent="#0ea5e9" delay={0.2} />
           </Reveal>
           <Reveal delay={0.3} style={{ height: "100%" }}>
-            <StatCard value={18} suffix="+" label="Zemí světa" sublabel="marketing v mezinárodním prostředí" icon={Globe} accent="#34d399" delay={0.3} />
-          </Reveal>
-          <Reveal delay={0.4} style={{ height: "100%" }}>
-            <StatCard value={35} suffix="%" label="Průměrné navýšení" sublabel="leadů, obratu a ziskovosti klientů" icon={TrendingUp} accent="#f59e0b" delay={0.4} />
+            <StatCard value={35} suffix="%" label="Průměrné navýšení" sublabel="leadů, obratu a ziskovosti klientů" icon={TrendingUp} accent="#f59e0b" delay={0.3} />
           </Reveal>
         </div>
       </div>
