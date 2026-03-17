@@ -59,7 +59,7 @@ function StatCard({
       ref={ref}
       className="glass rounded-2xl flex flex-col items-center text-center relative overflow-hidden group"
       style={{
-        padding: "clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 2vw, 2rem)",
+        padding: "clamp(1.75rem, 3vw, 2.5rem) clamp(1rem, 1.5vw, 1.5rem)",
         borderBottom: `2px solid rgba(${rgb}, 0.4)`,
       }}
     >
@@ -71,29 +71,29 @@ function StatCard({
 
       {/* Icon box */}
       <div
-        className="w-16 h-16 flex items-center justify-center relative"
+        className="w-12 h-12 flex items-center justify-center relative"
         style={{
-          borderRadius: "1rem",
+          borderRadius: "0.875rem",
           background: `rgba(${rgb},0.1)`,
           border: `1px solid rgba(${rgb},0.35)`,
-          marginBottom: "clamp(1.5rem, 2.5vw, 2rem)",
-          boxShadow: `0 8px 24px rgba(${rgb}, 0.25)`,
+          marginBottom: "clamp(1rem, 2vw, 1.5rem)",
+          boxShadow: `0 6px 20px rgba(${rgb}, 0.25)`,
         }}
       >
-        <Icon size={30} color={accent} strokeWidth={1.8} />
+        <Icon size={22} color={accent} strokeWidth={1.8} />
       </div>
 
-      {/* Number — fixed size, no wrap */}
+      {/* Number */}
       <div
         className="relative font-black leading-none"
         style={{
-          fontSize: "5rem",
+          fontSize: "clamp(2.8rem, 4vw, 3.8rem)",
           whiteSpace: "nowrap",
           background: `linear-gradient(135deg, ${accent} 0%, #818cf8 100%)`,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
-          filter: `drop-shadow(0 0 20px rgba(${rgb}, 0.4))`,
+          filter: `drop-shadow(0 0 16px rgba(${rgb}, 0.5))`,
           marginBottom: "clamp(0.75rem, 1.5vw, 1rem)",
         }}
       >
