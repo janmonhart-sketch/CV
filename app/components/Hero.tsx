@@ -131,7 +131,7 @@ export default function Hero() {
                 Strategický marketingový leader s&nbsp;10 lety zkušeností
                 v&nbsp;budování marketingových oddělení a&nbsp;řízení růstu.
                 Řídil jsem projekty pro 50+ klientů včetně Siemens, BTL, Livesport
-                a&nbsp;Algotech. Specializuji se na výkonnostní marketing,
+                a&nbsp;Heureka. Specializuji se na výkonnostní marketing,
                 komplexní webová řešení a&nbsp;implementaci AI do marketingových procesů.
               </p>
             </Reveal>

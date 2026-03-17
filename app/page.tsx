@@ -7,7 +7,6 @@ import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 import SmoothScroll from "./components/SmoothScroll";
 import PageIntro from "./components/PageIntro";
-import Navigation from "./components/Navigation";
 import SideOutline from "./components/SideOutline";
 
 export default function Home() {
@@ -15,7 +14,6 @@ export default function Home() {
     <>
       <SmoothScroll />
       <PageIntro />
-      <Navigation />
       <SideOutline />
       <main>
         <Hero />

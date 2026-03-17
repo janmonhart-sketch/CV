@@ -8,7 +8,7 @@ import {
   useTransform,
   animate,
 } from "framer-motion";
-import { Handshake, Banknote, Rocket, Globe } from "lucide-react";
+import { Handshake, Banknote, Rocket, Globe, TrendingUp } from "lucide-react";
 import Reveal from "./Reveal";
 import SplitText from "./SplitText";
 
@@ -16,6 +16,7 @@ function accentRgb(accent: string): string {
   if (accent === "#0ea5e9") return "14,165,233";
   if (accent === "#818cf8") return "129,140,248";
   if (accent === "#34d399") return "52,211,153";
+  if (accent === "#f59e0b") return "245,158,11";
   return "14,165,233";
 }
 
@@ -149,18 +150,21 @@ export default function Stats() {
           </span>
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 w-full">
           <Reveal delay={0}>
-            <StatCard value={40} suffix="+" label="Spokojených klientů" sublabel="Siemens, BTL, Livesport, Heureka a další" icon={Handshake} accent="#0ea5e9" delay={0} />
+            <StatCard value={50} suffix="+" label="Spokojených klientů" sublabel="Siemens, BTL, Livesport, Heureka a další" icon={Handshake} accent="#0ea5e9" delay={0} />
           </Reveal>
           <Reveal delay={0.1}>
-            <StatCard value={5} suffix="M+" label="Roční spend" sublabel="v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} />
+            <StatCard value={10} suffix="M+" label="Spravovaných budgetů" sublabel="ročně v aktivně řízených kampaních" icon={Banknote} accent="#818cf8" delay={0.1} />
           </Reveal>
           <Reveal delay={0.2}>
             <StatCard value={10} suffix="" label="Let v oboru" sublabel="od KAM po Marketing Leadera" icon={Rocket} accent="#0ea5e9" delay={0.2} />
           </Reveal>
           <Reveal delay={0.3}>
             <StatCard value={18} suffix="+" label="Zemí světa" sublabel="marketing v mezinárodním prostředí" icon={Globe} accent="#34d399" delay={0.3} />
+          </Reveal>
+          <Reveal delay={0.4}>
+            <StatCard value={35} suffix="%" label="Průměrné navýšení" sublabel="leadů, obratu a ziskovosti klientů" icon={TrendingUp} accent="#f59e0b" delay={0.4} />
           </Reveal>
         </div>
       </div>
