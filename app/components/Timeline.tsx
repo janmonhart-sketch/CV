@@ -8,7 +8,7 @@ import Reveal from "./Reveal";
 const experiences = [
   {
     company: "ANT studio s.r.o.",
-    role: "Key Account Manager",
+    role: "Key Account Manager & Client Strategy Lead",
     period: "2022 — současnost",
     color: "#0ea5e9",
     highlights: [
@@ -24,7 +24,7 @@ const experiences = [
     period: "2020 — 2022",
     color: "#818cf8",
     highlights: [
-      "Založení a plné řízení B2B/B2C marketingové agentury od nuly",
+      "Vytvoření a plné řízení marketingového oddělení pro B2C a B2B klienty",
       "Nastavení a optimalizace marketingových procesů (WebDev, SEO, PPC, SMM)",
       "Řízení rozpočtů a kampaní pro 20+ klientů, s průměrným navýšením prodejů/leadů o 35 %",
     ],
